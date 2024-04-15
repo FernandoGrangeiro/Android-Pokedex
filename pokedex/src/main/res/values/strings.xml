@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pokedex_cost_per_launch">Cost per launch: $%dm</string>
+    <string name="pokedex_first_flight">First flight: %s</string>
+    <string name="pokedex_height">Height: %dm</string>
+    <string name="pokedex_weight">Weight: %dt</string>
+    <string name="pokedex_error_fetching">Sorry, something went wrong when fetching rockets</string>
+    <string name="pokedex_error_refreshing">Sorry, something went wrong when refreshing rockets</string>
+    <string name="pokedex_image_content_description">Rocket image</string>
+</resources>
