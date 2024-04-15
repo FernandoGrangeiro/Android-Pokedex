@@ -1,5 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":pokedex")
+
+
 include(":app")
 include(":baseline-profiles")
 include(":basic-feature")

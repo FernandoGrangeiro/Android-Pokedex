@@ -58,6 +58,7 @@ baselineProfile {
 dependencies {
     implementation(project(":core"))
     implementation(project(":basic-feature"))
+    implementation(project(":pokedex"))
 
     implementation(libs.hilt)
     implementation(libs.navigation) // needed for Room
