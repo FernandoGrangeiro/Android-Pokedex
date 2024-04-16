@@ -6,7 +6,7 @@ import eu.krzdabrowski.starter.core.utils.resultOf
 fun interface RefreshPokedexUseCase : suspend () -> Result<Unit>
 
 suspend fun refreshPokedex(
-    PokedexRepository: PokedexRepository,
+    pokedexRepository: PokedexRepository,
 ): Result<Unit> = resultOf {
-    PokedexRepository.refreshPokedex()
+    pokedexRepository.refreshPokedex()
 }

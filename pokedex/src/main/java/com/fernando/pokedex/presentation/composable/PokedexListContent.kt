@@ -11,11 +11,11 @@ import androidx.compose.ui.res.dimensionResource
 import com.fernando.pokedex.presentation.model.PokedexDisplayable
 import eu.krzdabrowski.starter.basicfeature.R
 
-const val Pokedex_DIVIDER_TEST_TAG = "PokedexDividerTestTag"
+const val POKEDEX_DIVIDER_TEST_TAG = "PokedexDividerTestTag"
 
 @Composable
 fun PokedexListContent(
-    PokedexList: List<PokedexDisplayable>,
+    pokedexList: List<PokedexDisplayable>,
     modifier: Modifier = Modifier,
     onPokedexClick: (String) -> Unit,
 ) {
@@ -26,17 +26,17 @@ fun PokedexListContent(
             ),
     ) {
         itemsIndexed(
-            items = PokedexList,
-            key = { _, Pokedex -> Pokedex.id },
+            items = pokedexList,
+            key = { _, pokedex -> pokedex.id },
         ) { index, item ->
             PokedexItem(
-                Pokedex = item,
+                pokedex = item,
                 onPokedexClick = { onPokedexClick(item.toString()) },
             )
 
-            if (index < PokedexList.lastIndex) {
+            if (index < pokedexList.lastIndex) {
                 HorizontalDivider(
-                    modifier = Modifier.testTag(Pokedex_DIVIDER_TEST_TAG),
+                    modifier = Modifier.testTag(POKEDEX_DIVIDER_TEST_TAG),
                 )
             }
         }

@@ -20,10 +20,10 @@ class PokedexViewModel @Inject constructor(
     private val getPokedexUseCase: GetPokedexUseCase,
     private val refreshPokedexUseCase: RefreshPokedexUseCase,
     savedStateHandle: SavedStateHandle,
-    PokedexInitialState: PokedexUiState,
+    pokedexInitialState: PokedexUiState,
 ) : BaseViewModel<PokedexUiState, PokedexUiState.PartialState, PokedexEvent, PokedexIntent>(
     savedStateHandle,
-    PokedexInitialState,
+    pokedexInitialState,
 ) {
     init {
         observePokedex()
@@ -31,7 +31,7 @@ class PokedexViewModel @Inject constructor(
 
     override fun mapIntents(intent: PokedexIntent): Flow<PokedexUiState.PartialState> = when (intent) {
         is PokedexIntent.RefreshPokedex -> refreshPokedex()
-        is PokedexIntent.PokedexClicked -> PokedexClicked(intent.uri)
+        is PokedexIntent.PokedexClicked -> pokedexClicked(intent.uri)
     }
 
     override fun reduceUiState(
@@ -45,7 +45,7 @@ class PokedexViewModel @Inject constructor(
 
         is PokedexUiState.PartialState.Fetched -> previousState.copy(
             isLoading = false,
-            Pokedex = partialState.list,
+            pokedex = partialState.list,
             isError = false,
         )
 
@@ -81,7 +81,7 @@ class PokedexViewModel @Inject constructor(
         emit(PokedexUiState.PartialState.Loading)
     }
 
-    private fun PokedexClicked(uri: String): Flow<PokedexUiState.PartialState> = flow {
+    private fun pokedexClicked(uri: String): Flow<PokedexUiState.PartialState> = flow {
         if (uri.startsWith(HTTP_PREFIX) || uri.startsWith(HTTPS_PREFIX)) {
             setEvent(PokedexEvent.OpenWebBrowserWithDetails(uri))
         }

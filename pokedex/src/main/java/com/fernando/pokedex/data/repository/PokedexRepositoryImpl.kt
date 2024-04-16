@@ -12,31 +12,31 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 class PokedexRepositoryImpl @Inject constructor(
-    private val PokedexApi: PokedexApi,
-    private val PokedexDao: PokedexDao,
+    private val pokedexApi: PokedexApi,
+    private val pokedexDao: PokedexDao,
 ) : PokedexRepository {
 
     override fun getPokedex(): Flow<List<Pokedex>> {
-        return PokedexDao
+        return pokedexDao
             .getPokedex()
-            .map { PokedexCached ->
-                PokedexCached.map { it.toDomainModel() }
+            .map { pokedexCached ->
+                pokedexCached.map { it.toDomainModel() }
             }
-            .onEach { Pokedex ->
-                if (Pokedex.isEmpty()) {
+            .onEach { pokedex ->
+                if (pokedex.isEmpty()) {
                     refreshPokedex()
                 }
             }
     }
 
     override suspend fun refreshPokedex() {
-        PokedexApi
+        pokedexApi
             .getPokedex()
             .results.mapIndexed { index, pokemon ->
                 pokemon.toDomainModel(index.toString()).toEntityModel()
             }
             .also {
-                PokedexDao.savePokedex(it)
+                pokedexDao.savePokedex(it)
             }
     }
 }

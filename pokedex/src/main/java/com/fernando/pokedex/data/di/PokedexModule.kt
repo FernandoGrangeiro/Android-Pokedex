@@ -30,19 +30,19 @@ internal object PokedexModule {
 
     @Provides
     fun provideGetPokedexUseCase(
-        PokedexRepository: PokedexRepository,
+        pokedexRepository: PokedexRepository,
     ): GetPokedexUseCase {
         return GetPokedexUseCase {
-            getPokedex(PokedexRepository)
+            getPokedex(pokedexRepository)
         }
     }
 
     @Provides
     fun provideRefreshPokedexUseCase(
-        PokedexRepository: PokedexRepository,
+        pokedexRepository: PokedexRepository,
     ): RefreshPokedexUseCase {
         return RefreshPokedexUseCase {
-            refreshPokedex(PokedexRepository)
+            refreshPokedex(pokedexRepository)
         }
     }
 

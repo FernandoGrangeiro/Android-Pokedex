@@ -14,8 +14,8 @@ private const val RETRY_TIME_IN_MILLIS = 15_000L
 fun interface GetPokedexUseCase : () -> Flow<Result<List<Pokedex>>>
 
 fun getPokedex(
-    PokedexRepository: PokedexRepository,
-): Flow<Result<List<Pokedex>>> = PokedexRepository
+    pokedexRepository: PokedexRepository,
+): Flow<Result<List<Pokedex>>> = pokedexRepository
     .getPokedex()
     .map { Result.success(it) }
     .retryWhen { cause, _ ->

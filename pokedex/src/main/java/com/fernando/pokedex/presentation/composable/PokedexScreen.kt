@@ -60,7 +60,7 @@ internal fun PokedexScreen(
                 .padding(paddingValues)
                 .nestedScroll(pullToRefreshState.nestedScrollConnection),
         ) {
-            if (uiState.Pokedex.isNotEmpty()) {
+            if (uiState.pokedex.isNotEmpty()) {
                 PokedexAvailableContent(
                     snackbarHostState = snackbarHostState,
                     uiState = uiState,
@@ -130,7 +130,7 @@ private fun PokedexAvailableContent(
     }
 
     PokedexListContent(
-        PokedexList = uiState.Pokedex,
+        pokedexList = uiState.pokedex,
         onPokedexClick = onPokedexClick,
     )
 }
