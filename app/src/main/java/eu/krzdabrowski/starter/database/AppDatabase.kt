@@ -7,7 +7,7 @@ import com.fernando.pokedex.data.local.model.PokedexCached
 import eu.krzdabrowski.starter.basicfeature.data.local.dao.RocketDao
 import eu.krzdabrowski.starter.basicfeature.data.local.model.RocketCached
 
-private const val DATABASE_VERSION = 1
+private const val DATABASE_VERSION = 2
 
 @Database(
     entities = [RocketCached::class, PokedexCached::class],

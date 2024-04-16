@@ -12,6 +12,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import eu.krzdabrowski.starter.core.network.PokeApiRetrofit
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -22,7 +23,7 @@ internal object PokedexModule {
     @Provides
     @Singleton
     fun providePokedexApi(
-        retrofit: Retrofit,
+        @PokeApiRetrofit retrofit: Retrofit,
     ): PokedexApi {
         return retrofit.create(PokedexApi::class.java)
     }

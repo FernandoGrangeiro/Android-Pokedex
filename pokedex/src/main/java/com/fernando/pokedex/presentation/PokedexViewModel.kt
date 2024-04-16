@@ -60,8 +60,8 @@ class PokedexViewModel @Inject constructor(
         getPokedexUseCase()
             .map { result ->
                 result.fold(
-                    onSuccess = { PokedexList ->
-                        PokedexUiState.PartialState.Fetched(PokedexList.map { it.toPresentationModel() })
+                    onSuccess = { response ->
+                        PokedexUiState.PartialState.Fetched(response.map { it.toPresentationModel() })
                     },
                     onFailure = {
                         PokedexUiState.PartialState.Error(it)

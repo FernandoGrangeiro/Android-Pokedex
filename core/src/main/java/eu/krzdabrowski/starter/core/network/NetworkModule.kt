@@ -13,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -46,6 +47,25 @@ internal object NetworkModule {
             .build()
     }
 
+    @PokeApiRetrofit
+    @Provides
+    @Singleton
+    fun providePokedexApiRetrofit(
+        okHttpClient: OkHttpClient,
+    ): Retrofit {
+        val json = Json {
+            ignoreUnknownKeys = true
+        }
+        val contentType = "application/json".toMediaType()
+
+        return Retrofit
+            .Builder()
+            .addConverterFactory(json.asConverterFactory(contentType))
+            .baseUrl(BuildConfig.POKEDEX_API_URL)
+            .client(okHttpClient)
+            .build()
+    }
+
     @Provides
     @Singleton
     fun provideRetrofit(
@@ -70,3 +90,7 @@ internal object NetworkModule {
         }
     }
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class PokeApiRetrofit

@@ -8,36 +8,33 @@ data class PokedexResponse(
     @SerialName("id")
     val id: String = "",
 
-    @SerialName("name")
-    val name: String = "",
-
-    @SerialName("cost_per_launch")
-    val costPerLaunch: Int = 0,
-
-    @SerialName("first_flight")
-    val firstFlightDate: String = "",
-
-    @SerialName("height")
-    val height: Height = Height(),
-
-    @SerialName("mass")
-    val weight: Weight = Weight(),
-
-    @SerialName("wikipedia")
-    val wikiUrl: String = "",
-
-    @SerialName("flickr_images")
-    val imageUrls: List<String> = emptyList(),
+    @SerialName("results")
+    val results: List<Pokemon>
 ) {
     @Serializable
-    data class Height(
-        val meters: Double = 0.0,
-        val feet: Double = 0.0,
-    )
+    data class Pokemon(
+        @SerialName("id")
+        val id: String = "",
 
-    @Serializable
-    data class Weight(
-        val kg: Int = 0,
-        val lb: Int = 0,
-    )
+        @SerialName("name")
+        val name: String = "",
+
+//        @SerialName("base_experience")
+//        val baseExperience: Int = 0,
+//
+//        @SerialName("weight")
+//        val weight: Double?,
+//
+//        @SerialName("is_default")
+//        val isDefault: Boolean?,
+//
+//        @SerialName("types")
+//        val types: List<Type> = emptyList()
+    ) {
+//        @Serializable
+//        data class Type(
+//            val name: String,
+//            val url: String,
+//        )
+    }
 }

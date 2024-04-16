@@ -31,7 +31,7 @@ fun PokedexListContent(
         ) { index, item ->
             PokedexItem(
                 Pokedex = item,
-                onPokedexClick = { onPokedexClick(item.wikiUrl) },
+                onPokedexClick = { onPokedexClick(item.toString()) },
             )
 
             if (index < PokedexList.lastIndex) {

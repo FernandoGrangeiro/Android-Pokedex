@@ -19,6 +19,7 @@ android {
 
     defaultConfig {
         buildConfigField("String", "SPACEX_API_URL", "\"https://api.spacexdata.com/v4/\"")
+        buildConfigField("String", "POKEDEX_API_URL", "\"https://pokeapi.co/api/v2/\"")
     }
 
     buildFeatures {

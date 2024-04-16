@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface PokedexApi {
 
-    @GET("Pokedex")
-    suspend fun getPokedex(): List<PokedexResponse>
+    @GET("pokemon")
+    suspend fun getPokedex(): PokedexResponse
 }

@@ -17,13 +17,10 @@ fun getPokedex(
     PokedexRepository: PokedexRepository,
 ): Flow<Result<List<Pokedex>>> = PokedexRepository
     .getPokedex()
-    .map {
-        Result.success(it)
-    }
+    .map { Result.success(it) }
     .retryWhen { cause, _ ->
         if (cause is IOException) {
             emit(Result.failure(cause))
-
             delay(RETRY_TIME_IN_MILLIS)
             true
         } else {
