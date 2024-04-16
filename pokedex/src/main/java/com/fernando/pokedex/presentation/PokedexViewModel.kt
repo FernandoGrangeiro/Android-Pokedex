@@ -38,7 +38,6 @@ class PokedexViewModel @Inject constructor(
         previousState: PokedexUiState,
         partialState: PokedexUiState.PartialState,
     ): PokedexUiState = when (partialState) {
-
         is PokedexUiState.PartialState.Loading -> previousState.copy(
             isLoading = true,
             isError = false,

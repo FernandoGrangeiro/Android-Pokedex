@@ -13,5 +13,5 @@ fun Pokedex.toPresentationModel() = PokedexDisplayable(
     isDefault = isDefault,
     weight = weight,
     type = type,
-    imageUrl = imageUrl
+    imageUrl = imageUrl,
 )

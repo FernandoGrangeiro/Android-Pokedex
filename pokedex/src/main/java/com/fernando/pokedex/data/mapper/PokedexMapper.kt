@@ -8,8 +8,8 @@ fun PokedexResponse.Pokemon.toDomainModel(id: String) = Pokedex(
     id = id,
     name = name,
     baseExperience = 0,
-    isDefault =  false,
-    type =  "",
+    isDefault = false,
+    type = "",
     weight = 0.0,
     imageUrl = "imageUrls.random()",
 )

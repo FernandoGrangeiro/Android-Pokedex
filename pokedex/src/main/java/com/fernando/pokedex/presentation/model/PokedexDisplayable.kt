@@ -11,5 +11,5 @@ data class PokedexDisplayable(
     val weight: Double,
     val isDefault: Boolean,
     val type: String,
-    val imageUrl: String
+    val imageUrl: String,
 ) : Parcelable

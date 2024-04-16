@@ -25,5 +25,5 @@ data class PokedexCached(
     val weight: Double,
 
     @ColumnInfo(name = "image_url")
-    val imageUrl: String
+    val imageUrl: String,
 )

@@ -9,7 +9,7 @@ data class PokedexResponse(
     val id: String = "",
 
     @SerialName("results")
-    val results: List<Pokemon>
+    val results: List<Pokemon>,
 ) {
     @Serializable
     data class Pokemon(

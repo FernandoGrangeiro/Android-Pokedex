@@ -30,7 +30,7 @@ class RocketsViewModel @Inject constructor(
     private val refreshRocketsUseCase: RefreshRocketsUseCase,
     savedStateHandle: SavedStateHandle,
     rocketsInitialState: RocketsUiState,
-    private val navigationManager: NavigationManager
+    private val navigationManager: NavigationManager,
 ) : BaseViewModel<RocketsUiState, PartialState, RocketsEvent, RocketsIntent>(
     savedStateHandle,
     rocketsInitialState,
@@ -96,6 +96,5 @@ class RocketsViewModel @Inject constructor(
             override val destination: String
                 get() = NavigationDestination.Pokedex.route
         })
-
     }
 }
