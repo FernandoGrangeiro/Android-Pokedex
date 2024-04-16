@@ -12,20 +12,17 @@ data class PokedexCached(
     @ColumnInfo(name = "name")
     val name: String,
 
-    @ColumnInfo(name = "cost_per_launch")
-    val costPerLaunch: Int,
+    @ColumnInfo(name = "base_experience")
+    val baseExperience: Int,
 
-    @ColumnInfo(name = "first_flight_date")
-    val firstFlightDate: String,
+    @ColumnInfo(name = "is_default")
+    val isDefault: Boolean,
 
-    @ColumnInfo(name = "height")
-    val height: Int,
+    @ColumnInfo(name = "typeA")
+    val type: String,
 
     @ColumnInfo(name = "weight")
-    val weight: Int,
-
-    @ColumnInfo(name = "wiki_url")
-    val wikiUrl: String,
+    val weight: Double,
 
     @ColumnInfo(name = "image_url")
     val imageUrl: String,

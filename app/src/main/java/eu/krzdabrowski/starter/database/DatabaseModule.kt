@@ -26,7 +26,7 @@ internal object DatabaseModule {
             context,
             AppDatabase::class.java,
             APP_DATABASE_NAME,
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Singleton

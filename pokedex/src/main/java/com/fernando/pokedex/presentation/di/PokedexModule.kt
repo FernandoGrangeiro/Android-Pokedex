@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ViewModelComponent::class)
 internal object PokedexViewModelModule {
-
     @Provides
     fun provideInitialPokedexUiState(): PokedexUiState = PokedexUiState()
 }

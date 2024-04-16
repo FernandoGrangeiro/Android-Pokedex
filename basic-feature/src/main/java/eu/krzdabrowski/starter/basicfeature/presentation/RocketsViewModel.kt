@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import eu.krzdabrowski.starter.basicfeature.domain.usecase.GetRocketsUseCase
 import eu.krzdabrowski.starter.basicfeature.domain.usecase.RefreshRocketsUseCase
+import eu.krzdabrowski.starter.basicfeature.presentation.RocketsEvent.OpenWebBrowserWithDetails
 import eu.krzdabrowski.starter.basicfeature.presentation.RocketsIntent.RefreshRockets
 import eu.krzdabrowski.starter.basicfeature.presentation.RocketsIntent.RocketClicked
 import eu.krzdabrowski.starter.basicfeature.presentation.RocketsUiState.PartialState
@@ -11,9 +12,6 @@ import eu.krzdabrowski.starter.basicfeature.presentation.RocketsUiState.PartialS
 import eu.krzdabrowski.starter.basicfeature.presentation.RocketsUiState.PartialState.Fetched
 import eu.krzdabrowski.starter.basicfeature.presentation.RocketsUiState.PartialState.Loading
 import eu.krzdabrowski.starter.basicfeature.presentation.mapper.toPresentationModel
-import eu.krzdabrowski.starter.core.navigation.NavigationCommand
-import eu.krzdabrowski.starter.core.navigation.NavigationDestination
-import eu.krzdabrowski.starter.core.navigation.NavigationManager
 import eu.krzdabrowski.starter.core.presentation.mvi.BaseViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -30,7 +28,6 @@ class RocketsViewModel @Inject constructor(
     private val refreshRocketsUseCase: RefreshRocketsUseCase,
     savedStateHandle: SavedStateHandle,
     rocketsInitialState: RocketsUiState,
-    private val navigationManager: NavigationManager
 ) : BaseViewModel<RocketsUiState, PartialState, RocketsEvent, RocketsIntent>(
     savedStateHandle,
     rocketsInitialState,
@@ -92,10 +89,8 @@ class RocketsViewModel @Inject constructor(
     }
 
     private fun rocketClicked(uri: String): Flow<PartialState> = flow {
-        navigationManager.navigate(object : NavigationCommand {
-            override val destination: String
-                get() = NavigationDestination.Pokedex.route
-        })
-
+        if (uri.startsWith(HTTP_PREFIX) || uri.startsWith(HTTPS_PREFIX)) {
+            setEvent(OpenWebBrowserWithDetails(uri))
+        }
     }
 }

@@ -9,7 +9,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class PokedexUiState(
     val isLoading: Boolean = false,
-    val Pokedex: List<PokedexDisplayable> = emptyList(),
+    val pokedex: List<PokedexDisplayable> = emptyList(),
     val isError: Boolean = false,
 ) : Parcelable {
 

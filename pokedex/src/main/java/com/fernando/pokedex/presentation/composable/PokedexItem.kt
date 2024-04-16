@@ -12,13 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import coil.compose.AsyncImage
-import eu.krzdabrowski.starter.basicfeature.R
 import com.fernando.pokedex.presentation.model.PokedexDisplayable
+import eu.krzdabrowski.starter.basicfeature.R
 import eu.krzdabrowski.starter.core.design.Typography
 
 @Composable
 fun PokedexItem(
-    Pokedex: PokedexDisplayable,
+    pokedex: PokedexDisplayable,
     modifier: Modifier = Modifier,
     onPokedexClick: () -> Unit,
 ) {
@@ -38,14 +38,14 @@ fun PokedexItem(
             ),
         ) {
             Text(
-                text = Pokedex.name,
+                text = pokedex.name,
                 style = Typography.titleMedium,
             )
 
             Text(
                 text = stringResource(
                     id = R.string.pokedex_cost_per_launch,
-                    Pokedex.costPerLaunchInMillions,
+                    pokedex.baseExperience,
                 ),
                 style = Typography.bodyMedium,
             )
@@ -53,7 +53,7 @@ fun PokedexItem(
             Text(
                 text = stringResource(
                     id = R.string.pokedex_first_flight,
-                    Pokedex.firstFlightDate,
+                    pokedex.isDefault,
                 ),
                 style = Typography.bodyMedium,
             )
@@ -61,7 +61,7 @@ fun PokedexItem(
             Text(
                 text = stringResource(
                     id = R.string.pokedex_height,
-                    Pokedex.heightInMeters,
+                    pokedex.type,
                 ),
                 style = Typography.bodyMedium,
             )
@@ -69,14 +69,14 @@ fun PokedexItem(
             Text(
                 text = stringResource(
                     id = R.string.pokedex_weight,
-                    Pokedex.weightInTonnes,
+                    pokedex.weight,
                 ),
                 style = Typography.bodyMedium,
             )
         }
 
         AsyncImage(
-            model = Pokedex.imageUrl,
+            model = pokedex.imageUrl,
             contentDescription = stringResource(id = R.string.pokedex_image_content_description),
             modifier = Modifier
                 .weight(1f),

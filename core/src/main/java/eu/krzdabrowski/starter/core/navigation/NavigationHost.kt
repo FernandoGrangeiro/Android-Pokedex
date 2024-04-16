@@ -13,7 +13,7 @@ fun NavigationHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavigationDestination.Rockets.route,
+        startDestination = NavigationDestination.Pokedex.route,
         modifier = modifier,
     ) {
         factories.forEach {

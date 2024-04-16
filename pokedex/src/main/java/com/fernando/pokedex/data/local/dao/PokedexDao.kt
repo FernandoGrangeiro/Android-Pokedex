@@ -13,5 +13,4 @@ interface PokedexDao {
     fun getPokedex(): Flow<List<PokedexCached>>
 
     @Upsert
-    suspend fun savePokedex(Pokedex: List<PokedexCached>)
-}
+    suspend fun savePokedex(pokedex: List<PokedexCached>) }

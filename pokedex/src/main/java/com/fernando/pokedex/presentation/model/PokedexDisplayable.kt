@@ -7,10 +7,9 @@ import kotlinx.parcelize.Parcelize
 data class PokedexDisplayable(
     val id: String,
     val name: String,
-    val costPerLaunchInMillions: Int,
-    val firstFlightDate: String,
-    val heightInMeters: Int,
-    val weightInTonnes: Int,
-    val wikiUrl: String,
+    val baseExperience: Int,
+    val weight: Double,
+    val isDefault: Boolean,
+    val type: String,
     val imageUrl: String,
 ) : Parcelable
